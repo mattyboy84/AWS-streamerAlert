@@ -1,2 +1,1 @@
-# AWS-streamerAlert
- 
+This Lambda runs on a 1 hour Event Schedule, it gets 1 or more names from a DB table, checks if the streamer has chnaged from offline -> online or online -> offline then tweets the change & updated the table. The twitter account used is @matt_api https://twitter.com/matt_api - it might still be running when you read this.

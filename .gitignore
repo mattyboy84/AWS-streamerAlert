@@ -1,0 +1,4 @@
+.aws-sam
+.vscode
+node_modules
+creds/

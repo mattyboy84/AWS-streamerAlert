@@ -1,0 +1,25 @@
+{
+  "name": "streamerAlert2",
+  "version": "1.0.0",
+  "description": "hello",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/awsprojects1/streamerAlert.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/awsprojects1/streamerAlert/issues"
+  },
+  "homepage": "https://gitlab.com/awsprojects1/streamerAlert#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1176.0",
+    "crypto-js": "^4.1.1",
+    "node-fetch": "^2.6.7",
+    "postman-collection": "^4.1.5"
+  }
+}

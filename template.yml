@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  DBTableName:
+    Type: String
+    Default: streamerTable
+  stackName:
+    Type: String
+    Default: streamerAlert2
+
+Globals:
+  Function:
+    CodeUri: ./
+    Runtime: nodejs14.x
+    MemorySize: 3008
+    Timeout: 900
+    Environment:
+      Variables:
+        TABLE_NAME: !Ref DBTableName
+
+Resources:
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: "/"
+      Policies:
+        - PolicyName: root
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: sts:AssumeRole
+                Resource: "arn:aws:iam::968721831531:role/integrate"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+
+  testFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub 
+        - '${Stack}-function'
+        - Stack: !Ref stackName
+      Handler: src/index.outgoingFunction
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Runtime: nodejs14.x
+
+  DBTable: 
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      TableName: !Ref DBTableName
+      AttributeDefinitions: 
+        - 
+          AttributeName: "streamerName"
+          AttributeType: "S"
+      KeySchema: 
+        - 
+          AttributeName: "streamerName"
+          KeyType: "HASH"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 2

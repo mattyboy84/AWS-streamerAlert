@@ -1,0 +1,19 @@
+{
+	"data": [{
+		"id": "41088265835",
+		"user_id": "21841789",
+		"user_login": "nmplol",
+		"user_name": "Nmplol",
+		"game_id": "509658",
+		"game_name": "Just Chatting",
+		"type": "live",
+		"title": "First Official Ban Council ft Emiru Cyr Manaldatuda",
+		"viewer_count": 45730,
+		"started_at": "2022-08-07T13:27:34Z",
+		"language": "en",
+		"thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_nmplol-{width}x{height}.jpg",
+		"tag_ids": ["6ea6bca4-4712-4ab9-a906-e3336a9d8039", "d5501bf8-6e6d-4242-9642-cdedcb684859", "481ba9ce-8101-4a42-b026-b6aa200fdd8c", "75057f79-cad6-4934-b129-67b1ea64e835", "c1ea4496-4418-4a4f-bc30-083cfc6a616b"],
+		"is_mature": false
+	}],
+	"pagination": {}
+}

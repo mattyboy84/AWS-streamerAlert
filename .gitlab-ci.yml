@@ -1,0 +1,14 @@
+image: amazon/aws-sam-cli-build-image-nodejs14.x:latest
+
+stages:
+  - deploy
+
+prod:
+  stage: deploy
+  before_script:
+    - set AWS_ACCESS_KEY_ID=$prod_key_id
+    - set AWS_SECRET_ACCESS_KEY=$prod_secret_key
+  script:
+   - sam build
+   - sam package --output-template-file packaged.yaml --s3-bucket gitlab-codebucket --region eu-west-2
+   - sam deploy --no-fail-on-empty-changeset --template-file packaged.yaml --stack-name streamerAlert2 --s3-bucket gitlab-codebucket --capabilities CAPABILITY_NAMED_IAM --region eu-west-2
